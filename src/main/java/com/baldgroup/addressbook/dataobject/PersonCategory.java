@@ -27,6 +27,9 @@ public class PersonCategory {
     /**组类编号**/
     private Integer categoryType;
 
+    /**通讯录book_info与组类person_category的外键**/
+    private String bookId;
+
     public PersonCategory() {
     }
 

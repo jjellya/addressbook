@@ -22,6 +22,7 @@ create table `person_category`(
 	`category_id` int not null auto_increment,
 	`category_name` varchar(64) not null comment '组类名字',
 	`category_type` int not null comment '组类编号',
+	`book_id` varchar(32) not null,
 	primary key (`category_id`)
 ) comment '组类表' ;
 create table `book_info`(
