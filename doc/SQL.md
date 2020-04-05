@@ -18,18 +18,25 @@ create table `person_info`(
 	`book_id` varchar(32) not null,
 	primary key (`person_id`)
 ) comment '联系人表' ;
+
+
 create table `person_category`(
 	`category_id` int not null auto_increment,
 	`category_name` varchar(64) not null comment '组类名字',
 	`category_type` int not null comment '组类编号',
+	`book_id` varchar(32) not null,
 	primary key (`category_id`)
 ) comment '组类表' ;
+
+
 create table `book_info`(
 	`book_id` varchar(32) not null,
 	`book_number` int not null default 0 comment '联系人数量',
 	`book_available` int not null default 100 comment '可用数量',
 	primary key (`book_id`)
 ) comment '通讯录表' ;
+
+
 create table `user_info`(
 	`user_id` varchar(32) not null,
 	`user_name` varchar(32) not null comment '昵称',
