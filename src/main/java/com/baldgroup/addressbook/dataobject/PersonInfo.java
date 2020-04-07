@@ -52,16 +52,10 @@ public class PersonInfo {
     /**邮编**/
     private String personPostcode;
 
-    /**所属组编号**/
-    private Integer categoryType;
+    /**category表-personInfo外键**/
+    private Integer categoryId;
 
     /**备注**/
     private String personMark;
-
-    /**book表-personInfo外键**/
-    private String bookId;
-
-
-
 
 }

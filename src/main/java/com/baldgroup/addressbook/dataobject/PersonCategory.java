@@ -19,24 +19,20 @@ public class PersonCategory {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String categoryId;
+    private Integer categoryId;
 
     /**组类名字**/
     private String categoryName;
 
-    /**组类编号**/
-    private Integer categoryType;
-
     /**通讯录book_info与组类person_category的外键**/
-    private String bookId;
+    private String userId;
 
     public PersonCategory() {
     }
 
-    public PersonCategory(String categoryName, Integer categoryType) {
+   public PersonCategory(String categoryName,String userId){
         this.categoryName = categoryName;
-        this.categoryType = categoryType;
-    }
-
+        this.userId = userId;
+   }
 
 }

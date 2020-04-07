@@ -12,7 +12,11 @@ import lombok.Getter;
 public enum UserPrivilegeEnums {
     ORDINARY_AVAILABLE(100,"普通用户可添加最大数量"),
 
-    VIP_AVAILABLE(200,"VIP用户可添加最大数量")
+    VIP_AVAILABLE(200,"VIP用户可添加最大数量"),
+
+    ORDINARY_USER(0,"普通用户"),
+
+    VIP_USER(1,"VIP用户"),
     ;
 
 

@@ -31,14 +31,14 @@ public class UserInfo {
     /**尊贵度**/
     private Integer userLevel;
 
-    /**通讯录id**/
-    private String bookId;
-
     /**当前通讯录中联系人数量**/
     private Integer bookNumber = 0;//默认新建为零;
 
     /**当前用户通讯录可用数量**/
     private Integer bookAvailable = UserPrivilegeEnums.ORDINARY_AVAILABLE.getCode();
+
+    public UserInfo() {
+    }
 
     public UserInfo(String userName, String userPassword) {
         this.userName = userName;
