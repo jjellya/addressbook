@@ -1,0 +1,7 @@
+# Created by 江海彬
+
+
+# 忽略以下文件管理
+.idea
+*.iml
+target
