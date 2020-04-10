@@ -1,4 +1,4 @@
-package com.baldgroup.addressbook.dataobject;
+package com.baldgroup.addressbook.pojo;
 
 import lombok.Data;
 
@@ -26,9 +26,6 @@ public class PersonCategory {
 
     /**通讯录book_info与组类person_category的外键**/
     private String userId;
-
-    public PersonCategory() {
-    }
 
    public PersonCategory(String categoryName,String userId){
         this.categoryName = categoryName;

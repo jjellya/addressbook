@@ -1,4 +1,4 @@
-package com.baldgroup.addressbook.dataobject;
+package com.baldgroup.addressbook.pojo;
 
 import com.baldgroup.addressbook.enums.UserPrivilegeEnums;
 import lombok.Data;
@@ -36,9 +36,6 @@ public class UserInfo {
 
     /**当前用户通讯录可用数量**/
     private Integer bookAvailable = UserPrivilegeEnums.ORDINARY_AVAILABLE.getCode();
-
-    public UserInfo() {
-    }
 
     public UserInfo(String userName, String userPassword) {
         this.userName = userName;

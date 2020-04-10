@@ -1,4 +1,4 @@
-package com.baldgroup.addressbook.dataobject;
+package com.baldgroup.addressbook.pojo;
 
 import lombok.Data;
 
