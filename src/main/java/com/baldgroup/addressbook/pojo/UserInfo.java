@@ -1,10 +1,6 @@
 package com.baldgroup.addressbook.pojo;
 
-import com.baldgroup.addressbook.enums.UserPrivilegeEnums;
 import lombok.Data;
-
-import javax.persistence.Entity;
-import javax.persistence.Id;
 
 /**
  * Create By  @入门小学徒_J
@@ -15,27 +11,25 @@ import javax.persistence.Id;
  *
  * @version 1.0
  */
-@Data
-@Entity
-public class UserInfo {
 
-    @Id
+@Data
+public class UserInfo {
     private String userId;
 
-    /**用户昵称**/
+    // 用户昵称
     private String userName;
 
-    /**密码**/
+    // 密码
     private String userPassword;
 
-    /**尊贵度**/
+    // 尊贵度
     private Integer userLevel;
 
-    /**当前通讯录中联系人数量**/
+    // 当前通讯录中联系人数量
     private Integer bookNumber = 0;//默认新建为零;
 
-    /**当前用户通讯录可用数量**/
-    private Integer bookAvailable = UserPrivilegeEnums.ORDINARY_AVAILABLE.getCode();
+    // 当前用户通讯录可用数量
+    private Integer bookAvailable;
 
     public UserInfo(String userName, String userPassword) {
         this.userName = userName;
