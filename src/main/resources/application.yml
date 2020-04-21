@@ -1,15 +1,35 @@
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/com_jiang?useUnicode=true&characterEncoding=utf-8&useSSL=true
+    #url: jdbc:mysql://localhost:3306/com_jiang?useUnicode=true&characterEncoding=utf-8&useSSL=true
     username: root
-    password: '0706'
-    #url: jdbc:mysql://192.168.0.103/addressbook?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    password: 123456
+    url: jdbc:mysql://192.168.0.103/addressbook?useUnicode=true&characterEncoding=utf-8&useSSL=false
+
+  mail:
+    host: smtp.qq.com
+    username: 3596405356@qq.com
+    password: edwsruruoymddacd
+    properties:
+      mail:
+        smtp:
+          ssl:
+            enable: true
+    default-encoding: utf-8
+
   jackson:
     default-property-inclusion: non_null
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5Dialect
+
+
+
 server:
   servlet:
     context-path: /addressbook
+  port: 8088
 mybatis:
   type-aliases-package: com.baldgroup.addressbook.pojo
   mapper-locations: classpath:mapper/*.xml
@@ -22,3 +42,7 @@ logging:
       baldgroup:
         addressbook:
           mapper: debug
+
+mail:
+  mailFrom: 3596405356@qq.com
+  domainName: http://localhost:8087

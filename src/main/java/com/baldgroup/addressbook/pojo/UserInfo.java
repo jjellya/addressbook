@@ -3,7 +3,7 @@ package com.baldgroup.addressbook.pojo;
 import lombok.Data;
 
 /**
- * Create By  @入门小学徒_J
+ * Create By  @林俊杰
  * 2020/4/5 18:21
  *
  * Modified By  @江海彬
@@ -30,6 +30,9 @@ public class UserInfo {
 
     // 当前用户通讯录可用数量
     private Integer bookAvailable;
+
+    public UserInfo() {
+    }
 
     public UserInfo(String userName, String userPassword) {
         this.userName = userName;
