@@ -55,5 +55,4 @@ public class PersonInfo {
 
     //所属用户
     private String userId;
-
 }

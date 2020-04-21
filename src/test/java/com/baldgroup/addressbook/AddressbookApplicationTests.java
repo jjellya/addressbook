@@ -13,6 +13,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import javax.annotation.Resource;
 import javax.sql.DataSource;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @SpringBootTest
@@ -46,7 +48,21 @@ class AddressbookApplicationTests {
 
     @Test
     void modifyInfoTest(){
+        // UserInfo userInfo = new UserInfo("11111", "小qin", "11992");
+        // PersonInfo personInfo = new PersonInfo("117799", "eeeee", "11111", "", "77dddd",
+        //         "11111", "88787@", "src", "dd", "aa", new Date(),
+        //         "1221", "jdjfjid", "1", "10086");
+        // List<String> list = new ArrayList<>();
+        // list.add("117799");
 
+        // modifyInfo.insertUserInfo(userInfo);
+        // modifyInfo.updateUserInfo(userInfo);
+        // modifyInfo.insertPerson(personInfo);
+        // modifyInfo.updatePersonInfo(personInfo);
+        // modifyInfo.updatePersonCategory(list, "2");
+        // modifyInfo.modifyPersonCategory("0", "1");
+        // modifyInfo.deleteCategory("1");
+        // modifyInfo.deletePerson("117799");
     }
 
 }

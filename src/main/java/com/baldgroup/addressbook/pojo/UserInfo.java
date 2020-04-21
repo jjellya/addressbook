@@ -23,11 +23,11 @@ public class UserInfo {
     private String userPassword;
 
     // 尊贵度
-    private Integer userLevel;
+    private int userLevel;
 
     // 当前通讯录中联系人数量
-    private Integer bookNumber;//默认新建为零;
+    private int bookNumber;
 
     // 当前用户通讯录可用数量
-    private Integer bookAvailable;
+    private int bookAvailable;
 }

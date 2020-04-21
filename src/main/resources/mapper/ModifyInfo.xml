@@ -5,11 +5,71 @@
 
 <mapper namespace="com.baldgroup.addressbook.mapper.ModifyInfo">
     <insert id="insertUserInfo">
-        insert into user_info (user_id, user_name, user_password,
+        INSERT INTO user_info (user_id, user_name, user_password,
                                user_level, book_number, book_available)
-        values (#{user.userId}, #{user.userName}, #{user.userPassword},
+        VALUES (#{user.userId}, #{user.userName}, #{user.userPassword},
                 #{user.userLevel}, #{user.bookNumber}, #{user.bookAvailable});
     </insert>
 
-    
+    <insert id="insertPerson">
+        INSERT INTO person_info (person_id, person_name, person_phone1, person_phone2, person_wechat, person_qq,
+                                 person_mail, person_icon, person_company, person_address, person_birthday,
+                                 person_postcode, person_remark, user_id, category_id)
+        VALUES (#{person.personId}, #{person.personName}, #{person.personPhone1}, #{person.personPhone2},
+                #{person.personWechat}, #{person.personQq}, #{person.personMail}, #{person.personIcon},
+                #{person.personCompany}, #{person.personAddress}, #{person.personBirthday}, #{person.personPostcode},
+                #{person.personRemark}, #{person.userId}, #{person.categoryId});
+    </insert>
+
+    <update id="updateUserInfo">
+        UPDATE user_info
+        SET user_name      = #{user.userName},
+            user_level     = #{user.userLevel},
+            book_number    = #{user.bookNumber},
+            book_available = #{user.bookAvailable}
+        WHERE user_id = #{user.userId};
+    </update>
+
+    <update id="updatePersonInfo">
+        UPDATE person_info
+        SET person_name     = #{person.personName},
+            person_phone1   = #{person.personPhone1},
+            person_phone2   = #{person.personPhone2},
+            person_wechat   = #{person.personWechat},
+            person_qq       = #{person.personQq},
+            person_mail     = #{person.personMail},
+            person_icon     = #{person.personIcon},
+            person_company  = #{person.personCompany},
+            person_address  = #{person.personAddress},
+            person_birthday = #{person.personBirthday},
+            person_postcode = #{person.personPostcode},
+            person_remark   = #{person.personRemark},
+            category_id     = #{person.categoryId}
+        WHERE person_id = #{person.personId};
+    </update>
+
+    <update id="updatePersonCategory">
+        update person_info
+        set category_id = #{cid}
+        where person_id IN
+        <foreach collection="list" index="index" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </update>
+
+    <update id="modifyPersonCategory">
+        update person_info
+        set category_id = #{nid}
+        where category_id = #{oid};
+    </update>
+
+    <delete id="deletePerson">
+        delete from person_info
+        where person_id = #{id}
+    </delete>
+
+    <delete id="deleteCategory">
+        delete from person_category
+        where category_id = #{id}
+    </delete>
 </mapper>
