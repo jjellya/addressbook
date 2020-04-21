@@ -4,5 +4,48 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.baldgroup.addressbook.mapper.SearchInfo">
+    <!--<resultMap id="Person" type="personInfo">-->
+    <!--    <id property="personId" column="person_id" jdbcType="VARCHAR"/>-->
+    <!--    <result property="personName" column="person_name" jdbcType="VARCHAR"/>-->
+    <!--    <result property="person"-->
+    <!--</resultMap>-->
 
+    <select id="queryUserInfo" resultType="userInfo">
+        select *
+        from user_info
+        where user_id = #{id};
+    </select>
+
+    <select id="queryPersonInfo" resultType="personInfo">
+        select *
+        from person_info
+        where user_id = #{id} and person_name = #{name};
+    </select>
+
+    <select id="queryCategories" resultType="personCategory">
+        select *
+        from person_category
+        where user_id = #{id};
+    </select>
+
+    <select id="queryPersonInfos" resultType="personInfo">
+        select *
+        from person_info
+        where category_id = #{id};
+    </select>
+
+    <select id="queryAllPersonInfos" resultType="personInfo">
+        select *
+        from person_info
+        where user_id = #{id};
+    </select>
+
+    <select id="queryMessage" resultType="personInfo">
+        select *
+        from person_info
+        where user_id = #{id}
+        and concat(person_id, person_name, person_phone1, person_phone2, person_wechat, person_qq,
+            person_mail, person_company, person_address, person_postcode, person_remark)
+        regexp #{message}
+    </select>
 </mapper>

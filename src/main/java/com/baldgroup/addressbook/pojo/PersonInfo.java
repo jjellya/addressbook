@@ -47,10 +47,13 @@ public class PersonInfo {
     // 邮编
     private String personPostcode;
 
-    // category表-personInfo外键
-    private Integer categoryId;
-
     // 备注
-    private String personMark;
+    private String personRemark;
+
+    // category表-personInfo外键
+    private String categoryId;
+
+    //所属用户
+    private String userId;
 
 }

@@ -26,14 +26,8 @@ public class UserInfo {
     private Integer userLevel;
 
     // 当前通讯录中联系人数量
-    private Integer bookNumber = 0;//默认新建为零;
+    private Integer bookNumber;//默认新建为零;
 
     // 当前用户通讯录可用数量
     private Integer bookAvailable;
-
-    public UserInfo(String userName, String userPassword) {
-        this.userName = userName;
-        this.userPassword = userPassword;
-
-    }
 }

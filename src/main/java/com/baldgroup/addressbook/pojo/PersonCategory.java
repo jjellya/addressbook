@@ -16,18 +16,12 @@ import javax.persistence.Id;
 
 @Data
 public class PersonCategory {
-    private Integer categoryId;
+    //组类标识
+    private String categoryId;
 
     // 组类名字
     private String categoryName;
 
-
     // 通讯录book_info与组类person_category的外键
     private String userId;
-
-    public PersonCategory(String categoryName, String userId) {
-        this.categoryName = categoryName;
-        this.userId = userId;
-    }
-
 }
