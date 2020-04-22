@@ -29,9 +29,6 @@ public class UserInfo {
     private int bookNumber;
 
     // 当前用户通讯录可用数量
-<<<<<<< HEAD
-    private int bookAvailable;
-=======
     private Integer bookAvailable;
 
     public UserInfo() {
@@ -42,5 +39,5 @@ public class UserInfo {
         this.userPassword = userPassword;
 
     }
->>>>>>> 3dd62ab3cb0757e8844bb0d8202156da9ff8121d
+
 }

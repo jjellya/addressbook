@@ -16,6 +16,13 @@
         where user_id = #{id};
     </select>
 
+    <select id="queryUserInfoByPassword" resultType="userInfo">
+        select *
+        from user_info
+        where user_password = #{password};
+    </select>
+
+
     <select id="queryPersonInfo" resultType="personInfo">
         select *
         from person_info

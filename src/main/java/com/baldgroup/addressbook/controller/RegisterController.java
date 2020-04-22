@@ -2,6 +2,7 @@ package com.baldgroup.addressbook.controller;
 
 import com.baldgroup.addressbook.async.MailTask;
 import com.baldgroup.addressbook.config.EmailConfig;
+import com.baldgroup.addressbook.enums.UserPrivilegeEnums;
 import com.baldgroup.addressbook.pojo.UserInfo;
 import com.baldgroup.addressbook.service.impl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,32 +47,33 @@ public class RegisterController {
                         @RequestParam("password") String password,
                         @RequestParam("email") String email){
         //code = 当前时间 + 位随机数
-        String activeCode = String.valueOf(new Date().getTime()) + String.valueOf(new Random().nextInt(900)+100)+email;
+        String activeCode = String.valueOf(new Date().getTime()) + String.valueOf(new Random().nextInt(900)+100);
 
-        taskExecutor.execute(new MailTask(activeCode, email, emailConfig.getMailMailFrom(), emailConfig.getMailDomainName(), javaMailSender));
+        taskExecutor.execute(new MailTask(activeCode+password, email, emailConfig.getMailMailFrom(), emailConfig.getMailDomainName(), javaMailSender));
 
         userService.addUser(userName, password, email, activeCode);
 
-        return "register";
+        return "success";
 
     }
 
     @GetMapping("/activate")
     public String activate(@RequestParam(value = "code") String code){
 
-        if(System.currentTimeMillis()-Long.valueOf(code.substring(0,code.length()-3))/1000<3){
+      //  if(System.currentTimeMillis()-Long.valueOf(code.substring(0,code.length()-3))/1000<3){
 
             UserInfo user = userService.activate(code);
             System.out.println(user);
             //如果用户不等于null，把用户状态修改status=1
             if (user !=null){
                 user.setUserLevel(1);
+                user.setBookAvailable(UserPrivilegeEnums.ORDINARY_AVAILABLE.getCode());
                 //把code验证码清空，已经不需要了
-                user.setUserId(code.substring(16));
+                user.setUserPassword(code.substring(16));
                 System.out.println(user);
                 userService.save(user);
             }
-        }
+       // }
         return "login";
     }
 }

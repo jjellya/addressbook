@@ -40,7 +40,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserInfo activate(String code) {
-        return searchInfo.queryUserInfo(code);
+        return searchInfo.queryUserInfoByPassword(code);
 
     }
 
@@ -49,12 +49,12 @@ public class UserServiceImpl implements UserService {
 
         UserInfo user = new UserInfo();
         user.setUserName(userName);
-        user.setUserPassword(DigestUtils.md5DigestAsHex(password.getBytes()));
-        user.setUserId(Code+email);
+        user.setUserPassword(Code+password);
+        user.setUserId(email);
         user.setBookAvailable(0);
         user.setBookNumber(0);
         user.setUserLevel(UserPrivilegeEnums.UNACTIVATE_USER.getCode());
-        modifyInfo.updateUserInfo(user);
+        modifyInfo.insertUserInfo(user);
 
     }
 }

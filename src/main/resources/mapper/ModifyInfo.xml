@@ -24,6 +24,7 @@
     <update id="updateUserInfo">
         UPDATE user_info
         SET user_name      = #{user.userName},
+            user_password  = #{user.userPassword},
             user_level     = #{user.userLevel},
             book_number    = #{user.bookNumber},
             book_available = #{user.bookAvailable}
