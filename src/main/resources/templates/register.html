@@ -1,3 +1,4 @@
+<!--
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -17,7 +18,7 @@
             </div>
         </div>
         <div class="form-group">
-            <!--<h2 class="form-signin-heading">注册</h2>-->
+
             <label for="password" class="col-sm-2 control-label  inline-style font-position-right">密码</label>
             <div class="col-sm-9  inline-style">
                 <input name="password" type="password" class="form-control" id="password" placeholder="密码">
@@ -41,8 +42,8 @@
             <div class="col-sm-offset-2 col-sm-10">
                 <div class="checkbox">
                     <label>
-                        <!--<input type="checkbox">
-                        记住密码-->
+
+
                     </label>
                 </div>
             </div>
@@ -58,4 +59,46 @@
 
 </div>
 </body>
+</html>-->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>注册</title>
+    <!-- Bootstrap core CSS -->
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link th:href="@{/css/signin.css}" rel="stylesheet">
+</head>
+
+<body class="text-center">
+<form class="form-signin" th:action="@{/register}" method="post">
+    <img class="mb-4" th:src="@{/img/bootstrap-solid.svg}" alt="" width="72" height="72">
+    <h1 class="h3 mb-3 font-weight-normal" th:text="#{register.tip}"></h1>
+    <!--如果msg的值为空,则不显示错误提示消息-->
+    <label class="sr-only" th:text="#{register.username}"></label>
+    <input type="text" name="userName" class="form-control" th:placeholder="#{register.username}" required="" autofocus="">
+
+    <label class="sr-only" th:text="#{register.password}"></label>
+    <input type="password" name="password" class="form-control" th:placeholder="#{register.password}" required="">
+
+    <p style="color: red" th:text="${msg_passwordError}" th:if="${not #strings.isEmpty(msg_passwordError)}"></p>
+    <label class="sr-only" th:text="#{register.passwordagain}"></label>
+    <input type="password" name="passwordAgain" class="form-control" th:placeholder="#{register.passwordagain}" required="">
+
+
+    <label class="sr-only" th:text="#{register.email}"></label>
+    <input type="text" name="email" class="form-control" th:placeholder="#{register.email}" required="" autofocus="">
+    <p style="color: red" th:text="${msg_registered}" th:if="${not #strings.isEmpty(msg_registered)}"></p>
+    <button class="btn btn-lg btn-primary btn-block" type="submit" th:text="#{register.btn}">Register</button>
+    <p class="mt-5 mb-3 text-muted">© 2017-2018</p>
+    <a class="btn btn-sm" th:href="@{/register.html(l='zh_CN')}">中文</a>
+    <a class="btn btn-sm" th:href="@{/register.html(l='en_US')}">English</a>
+</form>
+
+</body>
+
 </html>

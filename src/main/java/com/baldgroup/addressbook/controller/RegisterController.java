@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.task.TaskExecutor;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -36,7 +37,7 @@ public class RegisterController {
     @Autowired
     private EmailConfig emailConfig;
 
-    @GetMapping("/")
+    @GetMapping("/register")
     public String goRegisterPage(){
         return "register";
     }
@@ -45,15 +46,29 @@ public class RegisterController {
     @PostMapping("/register")
     public String index(@RequestParam("userName") String userName,
                         @RequestParam("password") String password,
-                        @RequestParam("email") String email){
-        //code = 当前时间 + 位随机数
-        String activeCode = String.valueOf(new Date().getTime()) + String.valueOf(new Random().nextInt(900)+100);
+                        @RequestParam("passwordAgain") String passwordAgain,
+                        @RequestParam("email") String email,
+                        Model model){
+        if(userService.fineOne(email)==null) {
+            if(password.equals(passwordAgain)) {
+                //code = 当前时间 + 位随机数
+                String activeCode = String.valueOf(new Date().getTime()) + String.valueOf(new Random().nextInt(900) + 100);
 
-        taskExecutor.execute(new MailTask(activeCode+password, email, emailConfig.getMailMailFrom(), emailConfig.getMailDomainName(), javaMailSender));
+                taskExecutor.execute(new MailTask(activeCode + password, email, emailConfig.getMailMailFrom(), emailConfig.getMailDomainName(), javaMailSender));
 
-        userService.addUser(userName, password, email, activeCode);
+                userService.addUser(userName, password, email, activeCode);
 
-        return "success";
+                return "success";
+            }else {
+                model.addAttribute("msg_passwordError","密码不一致!");
+                return   "register";
+            }
+
+        }else {
+            model.addAttribute("msg_registered","该邮箱已被注册!");
+            return   "register";
+        }
+
 
     }
 
@@ -74,6 +89,6 @@ public class RegisterController {
                 userService.save(user);
             }
        // }
-        return "login";
+        return "index";
     }
 }
