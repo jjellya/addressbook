@@ -23,6 +23,10 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQL5Dialect
+  thymeleaf:
+    cache: false #关闭模板引擎
+  messages:
+    basename: i18n.login,i18n.register #国际化
 
 
 
@@ -45,4 +49,4 @@ logging:
 
 mail:
   mailFrom: 3596405356@qq.com
-  domainName: http://localhost:8087
+  domainName: http://localhost:8088/addressbook

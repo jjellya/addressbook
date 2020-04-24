@@ -29,6 +29,14 @@ public class UserInfo {
     private int bookNumber;
 
     // 当前用户通讯录可用数量
-    private int bookAvailable;
+    private Integer bookAvailable;
 
+    public UserInfo() {
+    }
+
+    public UserInfo(String userName, String userPassword) {
+        this.userName = userName;
+        this.userPassword = userPassword;
+
+    }
 }

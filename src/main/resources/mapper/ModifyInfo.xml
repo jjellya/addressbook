@@ -59,7 +59,7 @@
         set category_id = #{cid,jdbcType=VARCHAR}
         where person_id IN
         <foreach collection="list" index="index" item="item" open="(" separator="," close=")">
-            #{item}
+            #{item,jdbcType=VARCHAR}
         </foreach>
     </update>
 

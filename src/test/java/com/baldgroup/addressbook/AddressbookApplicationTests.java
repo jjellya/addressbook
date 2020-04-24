@@ -53,13 +53,14 @@ class AddressbookApplicationTests {
         //         "11111", "88787@", "src", "dd", "aa", new Date(),
         //         "1221", "jdjfjid", "1", "10086");
         // List<String> list = new ArrayList<>();
-        // list.add("117799");
+        // list.add("10017");
+        // list.add("10010");
 
         // modifyInfo.insertUserInfo(userInfo);
         // modifyInfo.updateUserInfo(userInfo);
         // modifyInfo.insertPerson(personInfo);
         // modifyInfo.updatePersonInfo(personInfo);
-        // modifyInfo.updatePersonCategory(list, "2");
+        // modifyInfo.updatePersonCategory(list, "0");
         // modifyInfo.modifyPersonCategory("0", "1");
         // modifyInfo.deleteCategory("1");
         // modifyInfo.deletePerson("117799");

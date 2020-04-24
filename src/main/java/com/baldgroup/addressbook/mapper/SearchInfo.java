@@ -18,6 +18,9 @@ public interface SearchInfo {
     // 查看个人资料、登陆(单表)
     UserInfo queryUserInfo(@Param("id") String userId);
 
+    //
+    UserInfo queryUserInfoByPassword(@Param("password") String password);
+
     //查询某个联系人(单表)
     PersonInfo queryPersonInfo(@Param("id") String userId, @Param("name") String personName);
 

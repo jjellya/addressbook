@@ -16,6 +16,13 @@
         where user_id = #{id,jdbcType=VARCHAR};
     </select>
 
+    <select id="queryUserInfoByPassword" resultType="userInfo">
+        select *
+        from user_info
+        where user_password = #{password,jdbcType=VARCHAR};
+    </select>
+
+
     <select id="queryPersonInfo" resultType="personInfo">
         select *
         from person_info
