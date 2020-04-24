@@ -28,15 +28,24 @@ public class LoginController {
                         HttpSession session){
         UserInfo user = userService.fineOne(id);
         if(user!=null && user.getUserPassword().equals(password)){
-            session.setAttribute("loginUser",id);
-
+            session.setAttribute("loginUserId",id);
+            session.setAttribute("loginUser",user);
             return "redirect:/main.html";
         }else {
             //TODO
             model.addAttribute("msg","用户名或者密码错误!");
-            return   "redirect:/id_or_Password_is_error";
+            return   "index";//"redirect:/id_or_Password_is_error";
         }
 
+    }
+
+    @RequestMapping("user/signOut")
+    public String signOut(Model model,
+                          HttpSession session){
+        session.removeAttribute("loginUserId");
+        session.removeAttribute("loginUser");
+        model.addAttribute("msg","已注销,请重新登录！");
+        return "redirect:/login";
     }
 
 
