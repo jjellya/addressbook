@@ -39,8 +39,8 @@ class AddressbookApplicationTests {
         // List<PersonInfo> personInfos = searchInfo.queryPersonInfos("1");
         // System.out.println(personInfos);
 
-        // List<PersonInfo> personInfos = searchInfo.queryAllPersonInfos("10086");
-        // System.out.println(personInfos);
+        List<PersonInfo> personInfos = searchInfo.queryAllPersonInfos("10086");
+        System.out.println(personInfos);
 
         // List<PersonInfo> personInfos = searchInfo.queryMessage("10086", "1");
         // System.out.println(personInfos);
@@ -48,7 +48,7 @@ class AddressbookApplicationTests {
 
     @Test
     void modifyInfoTest(){
-        // UserInfo userInfo = new UserInfo("11111", "小qin", "11992");
+        // UserInfo userInfo = new UserInfo("11111", "小qin", "11444");
         // PersonInfo personInfo = new PersonInfo("117799", "eeeee", "11111", "", "77dddd",
         //         "11111", "88787@", "src", "dd", "aa", new Date(),
         //         "1221", "jdjfjid", "1", "10086");

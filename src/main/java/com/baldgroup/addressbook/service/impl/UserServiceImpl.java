@@ -54,7 +54,7 @@ public class UserServiceImpl implements UserService {
         user.setBookAvailable(0);
         user.setBookNumber(0);
         user.setUserLevel(UserPrivilegeEnums.UNACTIVATE_USER.getCode());
-        modifyInfo.updateUserInfo(user);
+        modifyInfo.insertUserInfo(user);
 
     }
 }
