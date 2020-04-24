@@ -33,7 +33,7 @@ spring:
 server:
   servlet:
     context-path: /addressbook
-  port: 8088
+  port: 8081
 mybatis:
   type-aliases-package: com.baldgroup.addressbook.pojo
   mapper-locations: classpath:mapper/*.xml

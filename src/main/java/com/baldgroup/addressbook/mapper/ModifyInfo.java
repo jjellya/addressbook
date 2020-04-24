@@ -4,9 +4,13 @@ import com.baldgroup.addressbook.pojo.PersonInfo;
 import com.baldgroup.addressbook.pojo.UserInfo;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
-
 import java.util.List;
 
+/**
+ * Create By  @江海彬
+ * 2020/4/20
+ * @version 1.0
+ */
 
 @Mapper
 public interface ModifyInfo {
