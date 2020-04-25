@@ -37,6 +37,7 @@
         UPDATE user_info
         SET user_name      = #{user.userName,jdbcType=VARCHAR},
             user_level     = #{user.userLevel,jdbcType=INTEGER},
+            user_password  = #{user.userPassword,jdbcType=INTEGER},
             book_number    = #{user.bookNumber,jdbcType=INTEGER},
             book_available = #{user.bookAvailable,jdbcType=INTEGER}
         WHERE user_id = #{user.userId,jdbcType=VARCHAR};
