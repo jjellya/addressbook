@@ -55,51 +55,52 @@
             <div th:replace="~{commons/commons::sidebar(active='list.html')}"></div>
 
             <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
-                <h2><a class="btn btn-sm btn-success" th:href="@{/user/toAdd}">添加联系人</a></h2>
+                <h2>
+                    <a class="btn btn-lg btn-success" th:href="@{/user/addPerson}">添加联系人</a>
+                    <!--<input class="style_file_content" accept=".rar" type="file" id="upload_file_id"/>-->
+                    <a class="btn btn-lg btn-secondary" type="file">导入</a>
+                    <a class="btn btn-lg btn-light" th:href="@{/user/addPerson}">导出</a>
+                </h2>
                 <div class="table-responsive">
                     <table class="table table-striped table-sm">
                         <thead>
                         <tr>
-                            <th>personId</th>
-                            <th>personName</th>
-                            <th>personPhone1</th>
-                            <th>personPhone2</th>
-                            <!--<th>personWechat</th>
-                            <th>personQq</th>
-                            <th>personMail</th>
-                            <th>personIcon</th>
-                            <th>personCompany</th>
-
-                            <th>personAddress</th>
-                            <th>personPostcode</th>
-                            <th>personRemark</th>-->
-                            <th>personBirthday</th>
-                            <th>categoryId</th>
+                           <!-- <th>personId</th>-->
+                            <th>Icon</th>
+                            <th>姓名</th>
+                            <th>手机</th>
+                            <th>电话</th>
+                            <th>微信</th>
+                            <th>QQ</th>
+                            <th>E-mail</th>
+                            <th>工作单位</th>
+                            <th>家庭住址</th>
+                            <th>邮编</th>
+                            <th>备注</th>
+                            <th>生日</th>
+                            <th>分组</th>
                             <th>操作</th>
-
-
                         </tr>
                         </thead>
                         <tbody>
                             <tr th:each="person:${personInfoList}">
-                                <td th:text="${person.getPersonId()}"></td>
+                               <!-- <td th:text="${person.getPersonId()}"></td>-->
+                                <td th:icon="${person.getPersonIcon()}" width="30" height="30" ></td>
                                 <td th:text="${person.getPersonName()}"></td>
                                 <td th:text="${person.getPersonPhone1()}"></td>
                                 <td th:text="${person.getPersonPhone2()}"></td>
-                                <!--<td th:text="${person.getPersonWechat()}"></td>
+                                <td th:text="${person.getPersonWechat()}"></td>
                                 <td th:text="${person.getPersonQq()}"></td>
                                 <td th:text="${person.getPersonMail()}"></td>
-                                <td th:text="${person.getPersonIcon()}"></td>
                                 <td th:text="${person.getPersonCompany()}"></td>
                                 <td th:text="${person.getPersonAddress()}"></td>
-
                                 <td th:text="${person.getPersonPostcode()}"></td>
-                                <td th:text="${person.getPersonRemark()}"></td>-->
+                                <td th:text="${person.getPersonRemark()}"></td>
                                 <td th:text="${#dates.format(person.getPersonBirthday(),'yyyy-MM-dd')}"></td>
-                                <td th:text="${person.getCategoryId()}"></td>
+                                <td th:text="${categoryList.get(person.getCategoryId()).getCategoryName()}"></td>
                                 <td>
-                                    <button class="btn btn-sm btn-primary">编辑</button>
-                                    <button class="btn btn-sm btn-danger">删除</button>
+                                    <a class="btn btn-sm btn-primary" th:href="@{/user/toChangePerson?personId=}+${person.getPersonId()}">编辑</a>
+                                    <a class="btn btn-sm btn-danger" th:href="@{/user/toDeletePerson?personId=}+${person.getPersonId()}" onClick="return confirm('删除后将无法恢复,确定要删除?')">删除</a>
                                 </td>
                             </tr>
                         </tbody>

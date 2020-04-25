@@ -1,5 +1,6 @@
 package com.baldgroup.addressbook.mapper;
 
+import com.baldgroup.addressbook.pojo.PersonCategory;
 import com.baldgroup.addressbook.pojo.PersonInfo;
 import com.baldgroup.addressbook.pojo.UserInfo;
 import org.apache.ibatis.annotations.Mapper;
@@ -8,8 +9,9 @@ import java.util.List;
 
 /**
  * Create By  @江海彬
- * 2020/4/20
- * @version 1.0
+ * Modified by @林俊杰
+ * 2020/4/25
+ * @version 1.2
  */
 
 @Mapper
@@ -19,6 +21,9 @@ public interface ModifyInfo {
 
     //添加联系人(单表)
     int insertPerson(@Param("person") PersonInfo personInfo);
+
+    //添加分组(单表)
+    int insertCategory(@Param("category")PersonCategory personCategory);
 
     //修改个人资料(单表)
     int updateUserInfo(@Param("user") UserInfo userInfo);

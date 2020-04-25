@@ -55,52 +55,59 @@
         <div th:replace="~{commons/commons::sidebar(active='list.html')}"></div>
 
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
-            <form th:action="@{/user/addPerson}" method="post">
+            <form th:action="@{/user/changePerson}" method="post">
+                <input type="hidden" name="personId" th:value="${personInfo.getPersonId()}">
+                <input type="hidden" name="userId" th:value="${personInfo.getUserId()}">
                 <div class="form-group">
                     <label>姓名</label>
-                    <input type="text" name="personName" class="form-control" required="required" placeholder="必填">
+                    <input th:value="${personInfo.getPersonName()}" type="text" name="personName" class="form-control" required="required" placeholder="必填">
                 </div>
                 <div class="form-group">
                     <label>手机</label>
-                    <input type="tel" name="personPhone1" class="form-control" required="required" placeholder="必填">
+                    <input th:value="${personInfo.getPersonPhone1()}" type="tel" name="personPhone1" class="form-control" required="required" placeholder="必填">
                 </div>
                 <div class="form-group">
                     <label>电话</label>
-                    <input type="text" name="personPhone2" class="form-control" placeholder="选填">
+                    <input th:value="${personInfo.getPersonPhone2()}" type="text" name="personPhone2" class="form-control" placeholder="(空)">
                 </div>
                 <div class="form-group">
                     <label>微信</label>
-                    <input type="text" name="personWechat" class="form-control" placeholder="选填">
+                    <input th:value="${personInfo.getPersonWechat()}" type="text" name="personWechat" class="form-control" placeholder="(空)">
                 </div>
                 <div class="form-group">
                     <label>QQ</label>
-                    <input type="text" name="personQq" class="form-control" placeholder="选填">
+                    <input th:value="${personInfo.getPersonQq()}" type="text" name="personQq" class="form-control" placeholder="(空)">
                 </div>
 
                 <div class="form-group">
                     <label>邮箱</label>
-                    <input type="email" name="personMail" class="form-control" placeholder="xxx@addressbook.com">
+                    <input th:value="${personInfo.getPersonMail()}" type="email" name="personMail" class="form-control" placeholder="(空)">
+                </div>
+
+                <div class="form-group">
+                    <label>Icon</label>
+                    <input th:value="${personInfo.getPersonIcon()}" type="text" name="personIcon" class="form-control" placeholder="(空)">
                 </div>
 
                 <div class="form-group">
                     <label>工作单位</label>
-                    <input type="text" name="personCompany" class="form-control" placeholder="选填">
+                    <input th:value="${personInfo.getPersonCompany()}" type="text" name="personCompany" class="form-control" placeholder="(空)">
                 </div>
                 <div class="form-group">
                     <label>家庭住址</label>d
-                    <input type="text" name="personAddress" class="form-control" placeholder="选填">
+                    <input th:value="${personInfo.getPersonAddress()}" type="text" name="personAddress" class="form-control" placeholder="(空)">
                 </div>
                 <div class="form-group">
                     <label>生日</label>
-                    <input type="date" name="personBirthday" class="form-control" placeholder="yyyy-MM-dd">
+                    <input th:value="${#dates.format(personInfo.getPersonBirthday(),'yyyy-MM-dd')}" type="date" name="personBirthday" class="form-control" placeholder="(空)">
                 </div>
                 <div class="form-group">
                     <label>邮编</label>
-                    <input type="text" name="personPostCode" class="form-control" placeholder="选填">
+                    <input th:value="${personInfo.getPersonPostcode()}" type="text" name="personPostCode" class="form-control" placeholder="(空)">
                 </div>
                 <div class="form-group">
                     <label>备注</label>
-                    <input type="text" name="personRemark" class="form-control" placeholder="选填">
+                    <input th:value="${personInfo.getPersonRemark()}" type="text" name="personRemark" class="form-control" placeholder="(空)">
                 </div>
               <!--  <div class="form-group">
                     <label>性别</label><br/>
@@ -120,13 +127,13 @@
                         <option th:each="dept:${departments}" th:text="${dept.getDepartmentName()}" th:value="${dept.getId()}"/>
                     </select>-->
                     <label>分组选择</label>
-                    <select class="form-control" name="categoryId">
-                        <option th:each="category:${categoryList}" th:text="${category.getCategoryName()}" th:value="${category.getCategoryId()}">
+                    <select  class="form-control" name="categoryId" >
+                        <option th:selected="${category.getCategoryId()==personInfo.getCategoryId()}" th:each="category:${categoryList}" th:text="${category.getCategoryName()}" th:value="${category.getCategoryId()}">
                         </option>
                     </select>
                 </div>
 
-                <button type="submit" class="btn btn-primary">添加</button>
+                <button type="submit" class="btn btn-primary">修改</button>
             </form>
         </main>
     </div>

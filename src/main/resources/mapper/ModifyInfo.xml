@@ -27,6 +27,12 @@
                 #{person.categoryId,jdbcType=VARCHAR});
     </insert>
 
+    <insert id="insertCategory">
+        INSERT INTO person_category (category_id, category_name, user_id)
+        VALUES (#{personCategory.categoryId,jdbcType=VARCHAR}, #{personCategory.categoryName,jdbcType=VARCHAR},
+                #{personCategory.userId,jdbcType=VARCHAR});
+    </insert>
+
     <update id="updateUserInfo">
         UPDATE user_info
         SET user_name      = #{user.userName,jdbcType=VARCHAR},

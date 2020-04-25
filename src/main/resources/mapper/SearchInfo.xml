@@ -29,6 +29,13 @@
         where user_id = #{id,jdbcType=VARCHAR} and person_name = #{name,jdbcType=VARCHAR};
     </select>
 
+    <select id="queryPersonInfoById" resultType="personInfo">
+        select *
+        from person_info
+        where person_id = #{personId,jdbcType=VARCHAR} and user_id = #{userId,jdbcType=VARCHAR};
+    </select>
+
+
     <select id="queryCategories" resultType="personCategory">
         select *
         from person_category

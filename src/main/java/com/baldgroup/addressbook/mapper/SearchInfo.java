@@ -9,8 +9,9 @@ import java.util.List;
 
 /**
  * Create By  @江海彬
+ * Modified By @林俊杰
  * 2020/4/20
- * @version 1.0
+ * @version 1.2
  */
 
 @Mapper
@@ -23,6 +24,8 @@ public interface SearchInfo {
 
     //查询某个联系人(单表)
     PersonInfo queryPersonInfo(@Param("id") String userId, @Param("name") String personName);
+
+    PersonInfo queryPersonInfoById(@Param("personId") String personId, @Param("userId") String userId);
 
     //查询分组(单表)
     List<PersonCategory> queryCategories(@Param("id") String userId);

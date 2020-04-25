@@ -30,7 +30,7 @@ public class LoginController {
         if(user!=null && user.getUserPassword().equals(password)){
             session.setAttribute("loginUserId",id);
             session.setAttribute("loginUser",user);
-            return "redirect:/main.html";
+            return "redirect:/home.html";
         }else {
             //TODO
             model.addAttribute("msg","用户名或者密码错误!");
