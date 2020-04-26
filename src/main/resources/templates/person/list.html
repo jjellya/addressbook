@@ -58,7 +58,34 @@
                 <h2>
                     <a class="btn btn-lg btn-success" th:href="@{/user/addPerson}">添加联系人</a>
                     <!--<input class="style_file_content" accept=".rar" type="file" id="upload_file_id"/>-->
-                    <a class="btn btn-lg btn-secondary" type="file">导入</a>
+                    <button  type="button" class="btn btn-lg btn-secondary" data-toggle="modal" data-target="#exampleModal">导入</button>
+                    <div class="modal" tabindex="-1" role="dialog" id="exampleModal" >
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header" style="height:50px">
+                                    <h3 class="modal-title">导入文件选择</h3>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body" style="height:100px">
+                                    <p >仅支持.CSV、.vCard格式文件导入</p>
+                                </div>
+                                <form th:action="@{/user/upload}" method="post" enctype="multipart/form-data">
+
+                                <div class="modal-footer" style="height:60px">
+
+                                    <!--<button type="button" class="btn  btn-lg btn-primary">Save changes</button>-->
+                                        <input type="file" class="btn-primary btn-lg"  name="multipartFile" id="multipartFile" style="width:180px" accept=".csv,.vCard" onchange="fileChange(this);">
+                                        <input type="submit" class="btn-success btn-lg" value="上传文件" name="submit_upload" disabled>
+                                        <button type="button" class="btn  btn-lg btn-secondary" data-dismiss="modal" style="width:50px">关闭</button>
+
+                                </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
                     <a class="btn btn-lg btn-light" th:href="@{/user/addPerson}">导出</a>
                 </h2>
                 <div class="table-responsive">
@@ -156,5 +183,52 @@
 </script>
 
 </body>
+<script>
+   /* multipartFile.onchange=*/
+    function fileChange(target) {
+    var fileName = document.all.multipartFile.value;
+    var ext,idx;
+    if(fileName == ''){
+        document.all.submit_upload.disabled = true;
+        alert(confirm('未选择文件,请选择文件！'));
+        return;
+    }else {
+        idx = fileName.lastIndexOf('.');
+        if(idx != -1){
+            ext = fileName.substr(idx+1).toUpperCase();
+            ext = ext.toLowerCase();
+            if(ext!='csv'&& ext!='vcard'){
+                document.all.submit_upload.disabled=true;
+                alert(confirm('请选择.csv或。vCard格式文件！'));
+                return;
+            }
+        }else {
+            document.all.submit_upload.disabled=true;
+            alert(confirm('请选择.csv或。vCard格式文件！'));
+            return;
+        }
+    }
+    var isIE = /msie/i.test(navigator.userAgent) && !window.opera;
+    var fileSize = 0;
+    if (isIE && !target.files){
+        var filePath = target.value;
+        var fileSystem = new ActiveXObject();
+        var file = fileSystem.GetFile (filePath);
+        fileSize = file.Size;
+    } else {
+        fileSize = target.files[0].size;
+    }
+    var size = fileSize / (1024*1024);
+
+    if(size>20){
+        document.all.submit_upload.disabled=true;
+        alert(warn('文件过大,已超过20MB!'));
+    }else{
+        document.all.submit_upload.disabled=false;
+    }
+
+    }
+
+</script>
 
 </html>
