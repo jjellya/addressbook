@@ -32,8 +32,6 @@ import java.util.Locale;
 public class PersonInfoController {
 
     @Resource
-    private ModifyInfo modifyInfo;
-    @Resource
     private SearchInfo searchInfo;
 
     @Autowired

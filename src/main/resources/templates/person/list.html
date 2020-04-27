@@ -124,7 +124,7 @@
                                 <td th:text="${person.getPersonPostcode()}"></td>
                                 <td th:text="${person.getPersonRemark()}"></td>
                                 <td th:text="${#dates.format(person.getPersonBirthday(),'yyyy-MM-dd')}"></td>
-                                <td th:text="${categoryList.get(person.getCategoryId()).getCategoryName()}"></td>
+                                <td th:each="category:${categoryList}" th:if="${category.getCategoryId()}==${person.getCategoryId()}" th:text="${category.getCategoryName()}"></td>
                                 <td>
                                     <a class="btn btn-sm btn-primary" th:href="@{/user/toChangePerson?personId=}+${person.getPersonId()}">编辑</a>
                                     <a class="btn btn-sm btn-danger" th:href="@{/user/toDeletePerson?personId=}+${person.getPersonId()}" onClick="return confirm('删除后将无法恢复,确定要删除?')">删除</a>

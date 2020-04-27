@@ -11,7 +11,8 @@ import java.util.List;
  * Create By  @江海彬
  * Modified by @林俊杰
  * 2020/4/25
- * @version 1.2
+ * @version 1.3
+ * PS:每次都得改改 DAO层，我很难受啊
  */
 
 @Mapper
@@ -23,7 +24,7 @@ public interface ModifyInfo {
     int insertPerson(@Param("person") PersonInfo personInfo);
 
     //添加分组(单表)
-    int insertCategory(@Param("category")PersonCategory personCategory);
+    int insertCategory(@Param("personCategory")PersonCategory personCategory);
 
     //修改个人资料(单表)
     int updateUserInfo(@Param("user") UserInfo userInfo);

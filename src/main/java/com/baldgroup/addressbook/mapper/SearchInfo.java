@@ -25,6 +25,8 @@ public interface SearchInfo {
     //查询某个联系人(单表)
     PersonInfo queryPersonInfo(@Param("id") String userId, @Param("name") String personName);
 
+    PersonCategory queryPersonCategoryByName(@Param("id") String userId,@Param("name") String categoryName);
+
     PersonInfo queryPersonInfoById(@Param("personId") String personId, @Param("userId") String userId);
 
     //查询分组(单表)
