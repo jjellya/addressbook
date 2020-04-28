@@ -85,6 +85,35 @@
                     </div>
                 </div>
 
+                <button  type="button" class="btn btn-lg btn-danger" data-toggle="modal" data-target="#exampleModal2">删除分组</button>
+                <div class="modal" tabindex="-1" role="dialog" id="exampleModal2" >
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header" style="height:50px">
+                                <h3 class="modal-title">新建分组</h3>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <form class="form-signin" th:action="@{/user/deleteCategory}" method="post" >
+                                <div class="modal-body" style="height:100px">
+                                   <!-- <input type="text" id="categoryId" name="categoryName" class="form-control" required="required" placeholder="分组名称">-->
+                                    <label>分组选择</label>
+                                    <select class="form-control" name="categoryId">
+                                        <option th:each="category:${categoryList}" th:text="${category.getCategoryName()}" th:value="${category.getCategoryId()}">
+                                        </option>
+                                    </select>
+                                </div>
+                                <div class="modal-footer" style="height:60px">
+                                    <button type="submit" class="btn  btn-lg btn-secondary">删除</button>
+                                    <button type="button" class="btn  btn-lg btn-warning" data-dismiss="modal" style="width:50px">关闭</button>
+
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
             </h2>
             <div class="accordion" id="accordionExample"  >
                 <div class="card" th:each="category:${categoryList}">

@@ -17,4 +17,6 @@ public interface CategoryService {
     void save(PersonInfo person,String userId);
 
     void deletePerson(String personId,String userId);
+
+    void deleteCategoy(String categoryId,String userId);
 }

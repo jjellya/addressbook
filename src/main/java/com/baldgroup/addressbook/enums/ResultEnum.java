@@ -13,6 +13,8 @@ public enum ResultEnum {
 
     USER_PERMISSION_ERROR(500,"该用户没有此权限"),
 
+    UNGROUP_CANNOT_DELETE(101,"不能删除\"未分组\""),
+
     ;
 
     private Integer code;

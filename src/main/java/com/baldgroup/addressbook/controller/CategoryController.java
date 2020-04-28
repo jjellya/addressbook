@@ -69,11 +69,26 @@ public class CategoryController {
 
 
     @PostMapping("/user/addCategory")
-    public String addPearson(@RequestParam("categoryName") String categoryName,
+    public String addCategory(@RequestParam("categoryName") String categoryName,
                              HttpSession session){
         String userId = String.valueOf(session.getAttribute("loginUserId"));
 
         categoryService.addCategory(categoryName,userId);
+        return "redirect:/user/home";
+    }
+
+    @PostMapping("/user/deleteCategory")
+    public String deleteCategory(@RequestParam("categoryId") String categoryId,
+                             HttpSession session){
+        String userId = String.valueOf(session.getAttribute("loginUserId"));
+
+        //categoryService.addCategory(categoryName,userId);
+        try{
+            categoryService.deleteCategoy(categoryId,userId);
+        }catch (UserException e){
+            //TODO
+            System.out.println(e.getMessage());
+        }
         return "redirect:/user/home";
     }
 

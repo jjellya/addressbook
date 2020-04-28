@@ -32,6 +32,8 @@ public interface ModifyInfo {
     //修改联系人资料(单表)
     int updatePersonInfo(@Param("person") PersonInfo personInfo);
 
+
+
     //修改用户分组(单表),支持批处理
     int updatePersonCategory(@Param("list") List<String> personId, @Param("cid") String newCategoryId);
 
