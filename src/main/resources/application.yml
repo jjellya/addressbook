@@ -1,10 +1,10 @@
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/com_jiang?useUnicode=true&characterEncoding=utf-8&useSSL=true
+    #url: jdbc:mysql://localhost:3306/com_jiang?useUnicode=true&characterEncoding=utf-8&useSSL=true
     username: root
-    password: '0706'
-#    url: jdbc:mysql://192.168.0.107/addressbook?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    password: 123456
+    url: jdbc:mysql://192.168.43.6/addressbook?useUnicode=true&characterEncoding=utf-8&useSSL=false
 
   mail:
     host: smtp.qq.com

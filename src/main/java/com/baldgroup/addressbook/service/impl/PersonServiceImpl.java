@@ -10,6 +10,7 @@ import com.baldgroup.addressbook.utils.KeyUtil;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * Create By  @林俊杰
@@ -33,6 +34,11 @@ public class PersonServiceImpl implements PersonService {
         person.setUserId(userId);
         modifyInfo.insertPerson(person);
         return person;
+    }
+
+    @Override
+    public void addPersonList(List<PersonInfo> personList, String userId) {
+        modifyInfo.insertPersonList(personList);
     }
 
     @Override

@@ -27,6 +27,23 @@
                 #{person.categoryId,jdbcType=VARCHAR});
     </insert>
 
+
+    <insert id="insertPersonList">
+        INSERT INTO person_info (person_id, person_name, person_phone1, person_phone2, person_wechat, person_qq,
+        person_mail, person_icon, person_company, person_address, person_birthday,
+        person_postcode, person_remark, user_id, category_id)
+        VALUES <foreach collection="list" index="index" item="item"  separator="," >(
+        #{item.personId,jdbcType=VARCHAR}, #{item.personName,jdbcType=VARCHAR},
+        #{item.personPhone1,jdbcType=VARCHAR}, #{item.personPhone2,jdbcType=VARCHAR},
+        #{item.personWechat,jdbcType=VARCHAR}, #{item.personQq,jdbcType=VARCHAR},
+        #{item.personMail,jdbcType=VARCHAR}, #{item.personIcon,jdbcType=VARCHAR},
+        #{item.personCompany,jdbcType=VARCHAR}, #{item.personAddress,jdbcType=VARCHAR},
+        #{item.personBirthday,jdbcType=DATE}, #{item.personPostcode,jdbcType=VARCHAR},
+        #{item.personRemark,jdbcType=VARCHAR}, #{item.userId,jdbcType=VARCHAR},
+        #{item.categoryId,jdbcType=VARCHAR}
+            );</foreach>
+    </insert>
+
     <insert id="insertCategory">
         INSERT INTO person_category (category_id, category_name, user_id)
         VALUES (#{personCategory.categoryId,jdbcType=VARCHAR}, #{personCategory.categoryName,jdbcType=VARCHAR},

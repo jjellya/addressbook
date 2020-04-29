@@ -1,9 +1,14 @@
 package com.baldgroup.addressbook.controller;
 
+import com.baldgroup.addressbook.exception.UserException;
 import com.baldgroup.addressbook.mapper.ModifyInfo;
 import com.baldgroup.addressbook.mapper.SearchInfo;
+import com.baldgroup.addressbook.pojo.PersonInfo;
+import com.baldgroup.addressbook.service.impl.FileServiceImpl;
+import com.baldgroup.addressbook.service.impl.PersonServiceImpl;
 import com.baldgroup.addressbook.utils.KeyUtil;
 import org.apache.commons.io.FilenameUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.ResourceUtils;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,6 +21,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -31,6 +37,10 @@ public class FileController {
     private ModifyInfo modifyInfo;
     @Resource
     private SearchInfo searchInfo;
+    @Autowired
+    private FileServiceImpl fileService;
+    @Autowired
+    private PersonServiceImpl personService;
 
     @PostMapping("/user/upload")
     public String upload(MultipartFile multipartFile,
@@ -71,6 +81,15 @@ public class FileController {
             try {
                 File targetFile =new File(dateDir, newFileName);
                 multipartFile.transferTo(targetFile);
+
+
+                List<PersonInfo> personList = fileService.transformPersonInfo(targetFile,userId);
+                System.out.println(personList);
+                if(!personList.isEmpty()){
+                    personService.addPersonList(personList,userId);
+                }
+
+
             }
             catch (IllegalStateException e){
                 //TODO
@@ -80,12 +99,11 @@ public class FileController {
         }catch (IOException e){
             //TODO
             System.out.println("ERROR====================================================>"+e.getMessage());
+        }catch (UserException e){
+            System.out.println(e.getMessage());
+        }catch (NullPointerException e){
+            System.out.println(e.getMessage());
         }
-
-
-
-
-
 
 
         return "redirect:/user/list";
