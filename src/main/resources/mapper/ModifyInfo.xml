@@ -41,7 +41,7 @@
         #{item.personBirthday,jdbcType=DATE}, #{item.personPostcode,jdbcType=VARCHAR},
         #{item.personRemark,jdbcType=VARCHAR}, #{item.userId,jdbcType=VARCHAR},
         #{item.categoryId,jdbcType=VARCHAR}
-            );</foreach>
+            )</foreach>
     </insert>
 
     <insert id="insertCategory">
