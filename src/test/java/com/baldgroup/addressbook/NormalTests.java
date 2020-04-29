@@ -7,7 +7,11 @@ import com.baldgroup.addressbook.pojo.PersonCategory;
 import com.baldgroup.addressbook.pojo.PersonInfo;
 import com.baldgroup.addressbook.service.impl.FileServiceImpl;
 import org.junit.jupiter.api.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.annotation.Resource;
 import java.io.File;
@@ -19,14 +23,17 @@ import java.util.List;
  *
  * @version 1.0
  */
-
-@SpringBootTest
+@RunWith(SpringJUnit4ClassRunner.class)
+@SpringBootTest(classes = AddressbookApplication.class)
 class NormalTests {
     @Resource
     private ModifyInfo modifyInfo;
 
     @Resource
     private SearchInfo searchInfo;
+
+    @Autowired
+    FileServiceImpl fileService;
 
     @Test
     void searchInfoTest() {
@@ -92,15 +99,14 @@ class NormalTests {
         //     System.out.println(matcher.group(11));
         // }
         // // System.out.println(matcher.find());
-        // File file = new File("F:\\test.csv");
-        // FileServiceImpl fileService = new FileServiceImpl();
-        // List<PersonInfo> personInfos = fileService.transformPersonInfo(file, "10086");
-        // if (!personInfos.isEmpty()) {
-        //     for (PersonInfo personInfo : personInfos) {
-        //         System.out.println(personInfo);
-        //     }
-        // }
-        // else
-        //     System.out.println("false");
+        File file = new File("F:\\Test.CSV");
+        List<PersonInfo> personInfos = fileService.transformPersonInfo(file, "10086");
+        if (!personInfos.isEmpty()) {
+            for (PersonInfo personInfo : personInfos) {
+                System.out.println(personInfo);
+            }
+        }
+        else
+            System.out.println("false");
     }
 }
