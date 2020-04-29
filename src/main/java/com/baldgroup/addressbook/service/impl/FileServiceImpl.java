@@ -6,6 +6,7 @@ import com.baldgroup.addressbook.mapper.SearchInfo;
 import com.baldgroup.addressbook.pojo.PersonInfo;
 import com.baldgroup.addressbook.service.FileService;
 import com.baldgroup.addressbook.utils.KeyUtil;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -36,7 +37,7 @@ public class FileServiceImpl implements FileService {
         try (InputStreamReader isr = new InputStreamReader(new FileInputStream(file), "GBK");) {
             BufferedReader bfr = new BufferedReader(isr);
             String line = null;
-            String pattern = "^([a-zA-Z0-9\\u4e00-\\u9fa5]*),(\\d*),(\\d*),([a-zA-Z0-9]*),(\\d*),([a-zA-Z0-9@.]*),([a-zA-Z0-9\\u4e00-\\u9fa5]*),([a-zA-Z0-9\\u4e00-\\u9fa5]*),([0-9/]*),(\\d*),([a-zA-Z0-9\\u4e00-\\u9fa5]*)$";
+            String pattern = "^([a-zA-Z0-9\\u4e00-\\u9fa5]*),*(\\d*),*(\\d*),*([a-zA-Z0-9]*),*(\\d*),*([a-zA-Z0-9@.]*),*([a-zA-Z0-9\\u4e00-\\u9fa5]*),*([a-zA-Z0-9\\u4e00-\\u9fa5]*),*([0-9/]*),*(\\d*),*([a-zA-Z0-9\\u4e00-\\u9fa5]*)$";
             Pattern compile = Pattern.compile(pattern);
             int i = 0;
             while ((line = bfr.readLine()) != null) {
