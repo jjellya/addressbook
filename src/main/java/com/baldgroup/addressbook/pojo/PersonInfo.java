@@ -1,12 +1,15 @@
 package com.baldgroup.addressbook.pojo;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import java.util.Date;
 
 /**
  * Create By  @林俊杰
  * 2020/4/5 17:23
- *
+ * Modified By @江海彬
  * @version 1.0
  */
 

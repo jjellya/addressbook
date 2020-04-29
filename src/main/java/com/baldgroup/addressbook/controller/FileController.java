@@ -71,7 +71,6 @@ public class FileController {
             try {
                 File targetFile =new File(dateDir, newFileName);
                 multipartFile.transferTo(targetFile);
-
             }
             catch (IllegalStateException e){
                 //TODO

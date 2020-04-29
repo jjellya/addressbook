@@ -12,5 +12,5 @@ import java.util.List;
  * @version 1.0
  */
 public interface FileService {
-    List<PersonInfo> transformPersonInfo(File file);
+    List<PersonInfo> transformPersonInfo(File file, String userId);
 }
