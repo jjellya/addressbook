@@ -39,5 +39,4 @@ public class UserInfo {
         this.userPassword = userPassword;
 
     }
-
 }

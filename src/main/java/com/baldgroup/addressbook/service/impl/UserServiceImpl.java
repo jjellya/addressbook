@@ -3,8 +3,10 @@ package com.baldgroup.addressbook.service.impl;
 import com.baldgroup.addressbook.enums.UserPrivilegeEnums;
 import com.baldgroup.addressbook.mapper.ModifyInfo;
 import com.baldgroup.addressbook.mapper.SearchInfo;
+import com.baldgroup.addressbook.pojo.PersonCategory;
 import com.baldgroup.addressbook.pojo.UserInfo;
 import com.baldgroup.addressbook.service.UserService;
+import com.baldgroup.addressbook.utils.KeyUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
@@ -54,7 +56,11 @@ public class UserServiceImpl implements UserService {
         user.setBookAvailable(0);
         user.setBookNumber(0);
         user.setUserLevel(UserPrivilegeEnums.UNACTIVATE_USER.getCode());
+        PersonCategory category = new PersonCategory();
+        category.setCategoryName("未分组");
+        category.setCategoryId(KeyUtil.genUniqueKey());
+        category.setUserId(email);
         modifyInfo.insertUserInfo(user);
-
+        modifyInfo.insertCategory(category);
     }
 }

@@ -13,46 +13,59 @@
     <select id="queryUserInfo" resultType="userInfo">
         select *
         from user_info
-        where user_id = #{id};
+        where user_id = #{id,jdbcType=VARCHAR};
     </select>
 
     <select id="queryUserInfoByPassword" resultType="userInfo">
         select *
         from user_info
-        where user_password = #{password};
+        where user_password = #{password,jdbcType=VARCHAR};
     </select>
 
 
     <select id="queryPersonInfo" resultType="personInfo">
         select *
         from person_info
-        where user_id = #{id} and person_name = #{name};
+        where user_id = #{id,jdbcType=VARCHAR} and person_name = #{name,jdbcType=VARCHAR};
     </select>
+
+    <select id="queryPersonCategoryByName" resultType="personCategory">
+        select *
+        from person_category
+        where user_id = #{id,jdbcType=VARCHAR} and category_name = #{name,jdbcType=VARCHAR};
+    </select>
+
+    <select id="queryPersonInfoById" resultType="personInfo">
+        select *
+        from person_info
+        where person_id = #{personId,jdbcType=VARCHAR} and user_id = #{userId,jdbcType=VARCHAR};
+    </select>
+
 
     <select id="queryCategories" resultType="personCategory">
         select *
         from person_category
-        where user_id = #{id};
+        where user_id = #{id,jdbcType=VARCHAR};
     </select>
 
     <select id="queryPersonInfos" resultType="personInfo">
         select *
         from person_info
-        where category_id = #{id};
+        where category_id = #{id,jdbcType=VARCHAR};
     </select>
 
     <select id="queryAllPersonInfos" resultType="personInfo">
         select *
         from person_info
-        where user_id = #{id};
+        where user_id = #{id,jdbcType=VARCHAR};
     </select>
 
     <select id="queryMessage" resultType="personInfo">
         select *
         from person_info
-        where user_id = #{id}
+        where user_id = #{id,jdbcType=VARCHAR}
         and concat(person_id, person_name, person_phone1, person_phone2, person_wechat, person_qq,
             person_mail, person_company, person_address, person_postcode, person_remark)
-        regexp #{message}
+        regexp #{message,jdbcType=VARCHAR}
     </select>
 </mapper>
