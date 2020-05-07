@@ -18,6 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 import javax.websocket.server.PathParam;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Locale;
@@ -43,8 +44,10 @@ public class PersonInfoController {
         String id =String.valueOf(session.getAttribute("loginUserId"));
         List<PersonInfo> personInfoList = searchInfo.queryAllPersonInfos(id);
         List<PersonCategory> categoryList = searchInfo.queryCategories(id);
+        List<String> personIdList = new ArrayList<>();
         model.addAttribute("personInfoList",personInfoList);
         model.addAttribute("categoryList",categoryList);
+        model.addAttribute("personIdList",personIdList);
         return "person/list";
     }
 
@@ -116,6 +119,25 @@ public class PersonInfoController {
 
         return "redirect:/user/list";
     }
+
+    @GetMapping("/user/toDeleteSelectedPerson")
+    public String toDeleteSelectedPerson(
+                                 Model model,
+                                 HttpSession session){
+       /* List<String> personIdList = (List<String>) model.getAttribute("personIdList");*/
+        /*System.out.println(personIdList);*/
+       /* String userId = String.valueOf(session.getAttribute("loginUserId"));
+        try{
+            personService.delete(id,userId);
+        }catch (UserException e){
+            //TODO
+            System.out.println(e.getMessage());
+        }*/
+
+        return "redirect:/user/list";
+    }
+
+
 
 
 }

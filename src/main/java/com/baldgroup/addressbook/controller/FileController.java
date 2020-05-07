@@ -88,9 +88,12 @@ public class FileController {
 
 
                 List<PersonInfo> personList = fileService.transformPersonInfo(targetFile,userId);
-                System.out.println(personList);
+                /*System.out.println(personList);*/
                 if(!personList.isEmpty()){
                     personService.addPersonList(personList,userId);
+                }
+                if (targetFile.exists()){
+                    targetFile.delete();
                 }
 
 
