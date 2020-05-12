@@ -105,6 +105,22 @@
             <artifactId>junit</artifactId>
             <scope>test</scope>
         </dependency>
+<<<<<<< HEAD
+=======
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-test</artifactId>
+            <version>1.4.2.RELEASE</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-csv</artifactId>
+            <version>1.7</version>
+        </dependency>
+
+>>>>>>> 6e7487d50e7c6a0216ad2250d8c5f4cde3166e44
 
     </dependencies>
 
