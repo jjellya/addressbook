@@ -6,7 +6,7 @@ import com.baldgroup.addressbook.mapper.SearchInfo;
 import com.baldgroup.addressbook.pojo.PersonInfo;
 import com.baldgroup.addressbook.service.FileService;
 import com.baldgroup.addressbook.utils.KeyUtil;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;

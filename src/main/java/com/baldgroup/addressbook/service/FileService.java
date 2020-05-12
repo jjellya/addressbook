@@ -1,6 +1,5 @@
 package com.baldgroup.addressbook.service;
 
-import com.baldgroup.addressbook.mapper.SearchInfo;
 import com.baldgroup.addressbook.pojo.PersonInfo;
 
 import java.io.File;
