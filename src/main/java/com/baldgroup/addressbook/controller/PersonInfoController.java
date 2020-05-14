@@ -137,6 +137,29 @@ public class PersonInfoController {
         return "redirect:/user/list";
     }
 
+    @GetMapping("user/search")
+    public String searchPerson(@RequestParam("src") String src,
+                               Model model,
+                               HttpSession session){
+        String userId = String.valueOf(session.getAttribute("loginUserId"));
+        //System.out.println(src);
+
+        //TODO
+        List<PersonInfo> dstPersonList = personService.searchPerson(src,userId);
+
+        /*if (dstPersonList.isEmpty()){
+            System.out.println("===================================================>dst is null");
+        }
+        System.out.println("dstList--->"+dstPersonList.toString()+"\nnumbers="+dstPersonList.size());
+*/
+        List<PersonCategory> categoryList = searchInfo.queryCategories(userId);
+
+        model.addAttribute("dstPersonList",dstPersonList);
+        model.addAttribute("categoryList",categoryList);
+        model.addAttribute("src",src);
+
+        return "person/SearchResult";
+    }
 
 
 

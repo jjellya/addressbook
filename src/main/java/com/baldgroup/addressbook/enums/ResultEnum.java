@@ -18,6 +18,8 @@ public enum ResultEnum {
     USER_FILE_ERROR(150, "文件不合法（非空字段为空或格式不正确）"),
 
     USER_NULL_EXPORT(151,"联系人为空,无法导出"),
+
+    USER_AVAILABLE_ERROR(167,"联系人数量超过当前用户最大容量"),
     ;
 
     private Integer code;

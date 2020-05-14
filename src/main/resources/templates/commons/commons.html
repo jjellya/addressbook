@@ -2,8 +2,8 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <!--头部导航栏-->
 <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0" th:fragment="topbar">
-    <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="http://getbootstrap.com/docs/4.0/examples/dashboard/#">[[${session.loginUser.getUserName()}]]</a>
-    <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
+    <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="/user/list">[[${session.loginUser.getUserName()}]]</a>
+    <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search" onkeydown="onKeyDown(event)" id="searchInput">
     <ul class="navbar-nav px-3">
         <li class="nav-item text-nowrap">
             <a class="nav-link" th:href="@{/user/signOut}">注销</a>
@@ -113,6 +113,25 @@
             </li>
         </ul>-->
     </div>
+    <script type="text/javascript">
+        function onKeyDown(event){
+            var e = event || window.event || arguments.callee.caller.arguments[0];
+            if(e && e.keyCode==27){ // 按 Esc
+                //要做的事情
+            }
+            if(e && e.keyCode==113){ // 按 F2
+                //要做的事情
+            }
+            if(e && e.keyCode==13){ // enter 键
+
+                    url = 'http://localhost:8088/addressbook/user/search'
+                 window.location.href = url + '?src=' + $("#searchInput").val();
+                //alert("此处回车触发搜索事件");
+            }
+
+        }
+
+    </script>
 </nav>
 
 </html>
