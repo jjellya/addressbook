@@ -60,12 +60,26 @@
         where user_id = #{id,jdbcType=VARCHAR};
     </select>
 
-    <select id="queryMessage" resultType="personInfo">
+    <select id="FuzzySearch" resultType="personInfo">
         select *
         from person_info
         where user_id = #{id,jdbcType=VARCHAR}
         and concat(person_id, person_name, person_phone1, person_phone2, person_wechat, person_qq,
             person_mail, person_company, person_address, person_postcode, person_remark)
         regexp #{message,jdbcType=VARCHAR}
+    </select>
+
+    <select id="queryMessage" resultType="userMessage">
+        select *
+        from user_message
+        where user_id = #{id,jdbcType=VARCHAR}
+        order by create_time desc
+    </select>
+
+    <select id="queryUnreadMessage" resultType="userMessage">
+        select *
+        from user_message
+        where state = 0
+        order by create_time desc
     </select>
 </mapper>

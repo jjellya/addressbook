@@ -18,4 +18,6 @@ public interface PersonService {
     void save(PersonInfo person,String userId);
 
     void delete(String personId,String userId);
+
+    List<PersonInfo> searchPerson(String src,String userId);
 }

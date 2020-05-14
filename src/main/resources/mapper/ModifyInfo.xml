@@ -104,4 +104,20 @@
         FROM person_category
         WHERE category_id = #{id,jdbcType=VARCHAR}
     </delete>
+
+    <insert id="insertMessage">
+        INSERT INTO user_message (user_id, person_mail, content, create_time, state)
+        VALUES (#{message.userId,jdbcType=VARCHAR}, #{message.personMail,jdbcType=VARCHAR},
+                #{message.content,jdbcType=VARCHAR}, #{message.createTime,jdbcType=DATE},
+                #{message.state,jdbcType=INTEGER})
+    </insert>
+
+    <update id="updateMessageState">
+        UPDATE user_message
+        SET state = 1
+        WHERE message_id IN
+        <foreach collection="list" item="item" index="index" open="(" separator="," close=")">
+            #{item.messageId,jdbcType=INTEGER}
+        </foreach>
+    </update>
 </mapper>

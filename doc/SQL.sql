@@ -71,5 +71,19 @@ CREATE TABLE `user_info`
 INSERT INTO `user_info` (`user_id`, `user_name`, `user_password`, `user_level`, `book_number`, `book_available`)
 VALUES ('10086', '小明', '10086', 0, 8, 92);
 
+DROP TABLE IF EXISTS `user_message`;
+CREATE TABLE `user_message`
+(
+    `message_id`  int          NOT NULL AUTO_INCREMENT,
+    `user_id`     varchar(32)  NOT NULL COMMENT '收件人',
+    `person_mail` varchar(32)  NOT NULL COMMENT '发件人',
+    `content`     varchar(512) NOT NULL COMMENT '留言',
+    `create_time` date         NOT NULL COMMENT '留言时间',
+    `state`       int          NOT NULL COMMENT '留言状态',
+    PRIMARY KEY (`message_id`)
+) ENGINE = InnoDB
+  DEFAULT CHARSET = utf8 COMMENT '留言表';
 
-
+INSERT INTO `user_message` (user_id, person_mail, content, create_time, state)
+VALUES ('10086', '809444444@qq.com', 'hello world', '1996-11-23 00:00:00', 0),
+       ('10086', '809444444@qq.com', 'hello world', '2050-11-23 00:00:00', 0)

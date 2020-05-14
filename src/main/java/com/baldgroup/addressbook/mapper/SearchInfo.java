@@ -3,8 +3,12 @@ package com.baldgroup.addressbook.mapper;
 import com.baldgroup.addressbook.pojo.PersonCategory;
 import com.baldgroup.addressbook.pojo.PersonInfo;
 import com.baldgroup.addressbook.pojo.UserInfo;
+import com.baldgroup.addressbook.pojo.UserMessage;
+import org.apache.catalina.User;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
+
 import java.util.List;
 
 /**
@@ -15,6 +19,7 @@ import java.util.List;
  */
 
 @Mapper
+@Repository
 public interface SearchInfo {
     // 查看个人资料、登陆(单表)
     UserInfo queryUserInfo(@Param("id") String userId);
@@ -39,5 +44,11 @@ public interface SearchInfo {
     List<PersonInfo> queryAllPersonInfos(@Param("id") String UserId);
 
     //模糊搜索(单表)
-    List<PersonInfo> queryMessage(@Param("id") String UserId, @Param("message") String message);
+    List<PersonInfo> FuzzySearch(@Param("id") String UserId, @Param("message") String message);
+
+    //查询用户所有留言
+    List<UserMessage> queryMessage(@Param("id") String userId);
+
+    //查询所有未读留言(state==0)
+    List<UserMessage> queryUnreadMessage();
 }

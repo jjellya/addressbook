@@ -3,18 +3,24 @@ package com.baldgroup.addressbook;
 
 import com.baldgroup.addressbook.mapper.ModifyInfo;
 import com.baldgroup.addressbook.mapper.SearchInfo;
-import com.baldgroup.addressbook.pojo.PersonCategory;
 import com.baldgroup.addressbook.pojo.PersonInfo;
+import com.baldgroup.addressbook.pojo.UserMessage;
+import com.baldgroup.addressbook.service.FileService;
+import com.baldgroup.addressbook.service.PersonService;
 import com.baldgroup.addressbook.service.impl.FileServiceImpl;
+import org.apache.catalina.core.ApplicationContext;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.annotation.Resource;
 import java.io.File;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -23,7 +29,6 @@ import java.util.List;
  *
  * @version 1.0
  */
-@RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(classes = AddressbookApplication.class)
 class NormalTests {
     @Resource
@@ -33,7 +38,7 @@ class NormalTests {
     private SearchInfo searchInfo;
 
     @Autowired
-    FileServiceImpl fileService;
+    private FileServiceImpl fileService;
 
     @Test
     void searchInfoTest() {
@@ -52,8 +57,8 @@ class NormalTests {
         // List<PersonInfo> personInfos = searchInfo.queryAllPersonInfos("10086");
         // System.out.println(personInfos);
 
-        PersonCategory personCategory = searchInfo.queryPersonCategoryByName("10086", "未分组");
-        System.out.println(personCategory.getCategoryId());
+        // PersonCategory personCategory = searchInfo.queryPersonCategoryByName("10086", "未分组");
+        // System.out.println(personCategory.getCategoryId());
 
         // List<PersonInfo> personInfos = searchInfo.queryMessage("10086", "1");
         // System.out.println(personInfos);
@@ -99,7 +104,7 @@ class NormalTests {
         //     System.out.println(matcher.group(11));
         // }
         // // System.out.println(matcher.find());
-        File file = new File("F:\\Test.CSV");
+        File file = new File("F:\\test.csv");
         List<PersonInfo> personInfos = fileService.transformPersonInfo(file, "10086");
         if (!personInfos.isEmpty()) {
             for (PersonInfo personInfo : personInfos) {
@@ -108,5 +113,19 @@ class NormalTests {
         }
         else
             System.out.println("false");
+    }
+
+    @Test
+    void testMessage() {
+        // UserMessage message = new UserMessage();
+        // message.setUserId("10086");
+        // message.setPersonMail("79449994@qq.com");
+        // message.setContent("hello my friend");
+        // message.setCreateTime(new Date());
+        // modifyInfo.insertMessage(message);
+        // searchInfo.queryMessage("10086").forEach(System.out::println);
+        List<UserMessage> userMessages = searchInfo.queryUnreadMessage();
+        userMessages.forEach(System.out::println);
+        modifyInfo.updateMessageState(userMessages);
     }
 }
