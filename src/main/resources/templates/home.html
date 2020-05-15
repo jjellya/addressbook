@@ -109,7 +109,7 @@
                     <div class="modal-dialog modal-dialog-centered" role="document">
                         <div class="modal-content">
                             <div class="modal-header" style="height:50px">
-                                <h3 class="modal-title">新建分组</h3>
+                                <h3 class="modal-title">删除分组</h3>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
@@ -165,7 +165,7 @@
                                     <tr>
                                         <!-- <th>personId</th>-->
 
-                                        <th>Icon</th>
+                                       <!-- <th>Icon</th>-->
                                         <th>姓名</th>
                                         <th>手机</th>
                                         <th>电话</th>
@@ -184,7 +184,7 @@
                                     <tbody>
                                     <tr th:each="person:${personInfoList}" th:if="${person.getCategoryId()}==${category.getCategoryId()}">
                                         <!-- <td th:text="${person.getPersonId()}"></td>-->
-                                        <td th:icon="${person.getPersonIcon()}" width="30" height="30" ></td>
+                                        <!--<td th:icon="${person.getPersonIcon()}" width="30" height="30" ></td>-->
                                         <td th:text="${person.getPersonName()}"></td>
                                         <td th:text="${person.getPersonPhone1()}"></td>
                                         <td th:text="${person.getPersonPhone2()}"></td>

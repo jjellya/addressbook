@@ -20,18 +20,20 @@ public class Pinyin4jUtil {
         format.setToneType(HanyuPinyinToneType.WITHOUT_TONE);
 
         StringBuilder firstPinyin = new StringBuilder();
-        char[] chineseArr = chinese.trim().toCharArray();
-        try {
-            for (int i = 0, len = chineseArr.length; i < len; i++) {
-                if(Character.toString(chineseArr[i]).matches("[\\u4E00-\\u9FA5]+")){
-                    String[] pys = PinyinHelper.toHanyuPinyinStringArray(chineseArr[i],format);
-                    firstPinyin.append(pys[0].charAt(0));
-                }else {
-                    firstPinyin.append(chineseArr[i]);
+        if(chinese!=null) {
+            char[] chineseArr = chinese.trim().toCharArray();
+            try {
+                for (int i = 0, len = chineseArr.length; i < len; i++) {
+                    if (Character.toString(chineseArr[i]).matches("[\\u4E00-\\u9FA5]+")) {
+                        String[] pys = PinyinHelper.toHanyuPinyinStringArray(chineseArr[i], format);
+                        firstPinyin.append(pys[0].charAt(0));
+                    } else {
+                        firstPinyin.append(chineseArr[i]);
+                    }
                 }
+            } catch (BadHanyuPinyinOutputFormatCombination badHanyuPinyinOutputFormatCombination) {
+                badHanyuPinyinOutputFormatCombination.printStackTrace();
             }
-        } catch (BadHanyuPinyinOutputFormatCombination badHanyuPinyinOutputFormatCombination) {
-            badHanyuPinyinOutputFormatCombination.printStackTrace();
         }
         return firstPinyin.toString();
     }

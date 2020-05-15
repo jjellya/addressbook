@@ -138,7 +138,7 @@
                     <tr>
                         <!-- <th>personId</th>-->
                         <th class="col-xs-1" data-field="state" data-checkbox="true"></th>
-                        <th>Icon</th>
+                       <!-- <th>Icon</th>-->
                         <th data-sortable="true">姓名</th>
                         <th data-sortable="true">手机</th>
                         <th data-sortable="true">电话</th>
@@ -158,7 +158,7 @@
                     <tr th:each="person:${dstPersonList}">
                         <!-- <td th:text="${person.getPersonId()}"></td>-->
                         <td></td>
-                        <td th:type="img" th:src="${person.getPersonIcon()}" width="30" height="30" ></td>
+                       <!-- <td th:type="img" th:src="${person.getPersonIcon()}" width="30" height="30" ></td>-->
                         <td th:text="${person.getPersonName()}"></td>
                         <td th:text="${person.getPersonPhone1()}"></td>
                         <td th:text="${person.getPersonPhone2()}"></td>

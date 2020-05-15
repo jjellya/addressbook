@@ -147,11 +147,6 @@ public class PersonInfoController {
         //TODO
         List<PersonInfo> dstPersonList = personService.searchPerson(src,userId);
 
-        /*if (dstPersonList.isEmpty()){
-            System.out.println("===================================================>dst is null");
-        }
-        System.out.println("dstList--->"+dstPersonList.toString()+"\nnumbers="+dstPersonList.size());
-*/
         List<PersonCategory> categoryList = searchInfo.queryCategories(userId);
 
         model.addAttribute("dstPersonList",dstPersonList);
